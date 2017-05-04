@@ -13,7 +13,7 @@ input para1 file-name, para2 appID
 def upload_report(app_name, report_name):
 	# Fetch all the team & application ID and Name
 	headers = {'Accept': 'application/json'}
-	r = requests.get('http://10.112.184.177:8080/threadfix/rest/teams?apiKey=BHxhOwJmo0lyRKRAMPAR85jUHCWPHm0qOHgAaLTSew',headers=headers)
+	r = requests.get('http://IP:8080/threadfix/rest/teams?apiKey=BHxhOwJmo0lyRKRAMPAR85jUHCWPHm0qOHgAaLTSew',headers=headers)
 	#print r.status_code
 	#print r.text
 	data = json.loads(r.text)
@@ -41,7 +41,7 @@ def call_upload_api(app_id, report):
 	headers = {'Accept': 'application/json'}
 	#payload = {'file': report}
 	files = {'file': open(report, 'rb')}
-	url = "http://10.112.184.177:8080/threadfix/rest/applications/"+app_id+"/upload?apiKey=BHxhOwJmo0lyRKRAMPAR85jUHCWPHm0qOHgAaLTSew"
+	url = "http://IP:8080/threadfix/rest/applications/"+app_id+"/upload?apiKey=BHxhOwJmo0lyRKRAMPAR85jUHCWPHm0qOHgAaLTSew"
 	r = requests.post(url, headers=headers, files=files)
 	data = json.loads(r.text)
 	print "Scan report upload status=>" + str(data['success'])
